@@ -22,7 +22,7 @@ public class BoxBehavior : MonoBehaviour {
 			if (!TerrainBehavior.hashMap.ContainsKey(gameObject.GetInstanceID ())) {
 				TerrainBehavior.hashMap.Add (gameObject.GetInstanceID (), 1);
 				TerrainBehavior.boxesOnGround++;
-				print ("boxes on ground " + TerrainBehavior.boxesOnGround);
+				//print ("boxes on ground " + TerrainBehavior.boxesOnGround);
 			}
 			//print ("hit a thing " + gameObject.GetInstanceID());
 		} else {

@@ -33,8 +33,6 @@ public class Startup : MonoBehaviour {
 			if (j % 2 == 0)
 				Instantiate (box, new Vector3 (x, incY+j, (float) z-incXZ-1), Quaternion.identity);
 		}
-
-
 	}
 	
 	// Update is called once per frame

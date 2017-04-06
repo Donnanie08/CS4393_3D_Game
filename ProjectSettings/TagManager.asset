@@ -6,6 +6,7 @@ TagManager:
   tags:
   - terra
   - boxy
+  - FP
   layers:
   - Default
   - TransparentFX
