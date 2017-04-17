@@ -3,6 +3,10 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
+using UnityEngine.UI;
+using System.Collections.Generic;
+using System.Collections;
+
 
 namespace UnityStandardAssets.Characters.FirstPerson
 {
@@ -44,10 +48,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
 		public GameObject coconut;
 		public Transform throwObj;
-		private int power;
+		private float power;
 		public int powerLevel;
 		public int powerInc;
 		public int coconutNum;
+
+		//by Polly
+		public RectTransform BarBack;
+		public RectTransform BarFill;
+		private float n = 0f;
 
         // Use this for initialization
         private void Start()
@@ -67,12 +76,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
 
         // Update is called once per frame
-        void Update()
-        {
+        void Update ()
+		{
 			//if (!PauseGame.isPaused) {
-	            RotateView();
+			RotateView ();
 
-				/*
+			/*
 	            // the jump state needs to read here to make sure it is not missed
 	            if (!m_Jump)
 	            {
@@ -95,6 +104,20 @@ namespace UnityStandardAssets.Characters.FirstPerson
 				*/
 			if (coconutNum > 0) {
 				if (Input.GetKey (KeyCode.Space)) {
+					n += Time.deltaTime;
+					power = Mathf.PingPong (n, 1);
+					BarFill.sizeDelta = new Vector2 (BarBack.sizeDelta.x * power, BarBack.sizeDelta.y);
+				} 
+				if(Input.GetKeyUp(KeyCode.Space)) {
+					fire (power * 2000);
+					//fpc.fire (power * 2000f);
+					n = 0f;
+					power = 0;
+				}
+			}
+		}
+			/*
+				if (Input.GetKey (KeyCode.Space)) {
 					//print ("key down" + power);
 					if (power < 2000) {
 						//print ("add power");
@@ -103,7 +126,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 				} 
 
 				if (Input.GetKeyUp (KeyCode.Space)) {
-					fire ();
+					fire (power);
 					power = powerLevel;
 				}
 			}
@@ -111,8 +134,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			//print ("power: " + power);
 			//}
         }
+        */
 
-		private void fire() {
+		private void fire(float power) {
 			GameObject projectile = Instantiate (coconut, m_Camera.gameObject.transform.position, 
 				m_Camera.gameObject.transform.rotation);
 			projectile.GetComponent<Rigidbody> ().AddForce (m_Camera.transform.forward * power
