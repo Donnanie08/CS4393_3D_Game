@@ -28,7 +28,8 @@ public class MainMenu : MonoBehaviour {
 	}
 
 	//call this function whenever the user click on "NO" button
-	public void NoPress (){
+	public void NoPress ()
+	{
 		exitMenu.enabled = false;
 		playText.enabled = true;
 		exitText.enabled = true;
