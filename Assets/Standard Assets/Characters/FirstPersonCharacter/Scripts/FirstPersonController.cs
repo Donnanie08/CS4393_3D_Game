@@ -54,10 +54,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
 		public int coconutNum;
 
 		//by Polly
+		/*
 		public RectTransform BarBack;
 		public RectTransform BarFill;
 		private float n = 0f;
-
+		*/
         // Use this for initialization
         private void Start()
         {
@@ -102,6 +103,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
 	            m_PreviouslyGrounded = m_CharacterController.isGrounded;
 				*/
+
+			/*
 			if (coconutNum > 0) {
 				if (Input.GetKey (KeyCode.Space)) {
 					n += Time.deltaTime;
@@ -115,6 +118,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 					power = 0;
 				}
 			}
+			*/
 		}
 			/*
 				if (Input.GetKey (KeyCode.Space)) {
@@ -136,7 +140,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         }
         */
 
-		private void fire(float power) {
+		public void fire(float power) {
 			GameObject projectile = Instantiate (coconut, m_Camera.gameObject.transform.position, 
 				m_Camera.gameObject.transform.rotation);
 			projectile.GetComponent<Rigidbody> ().AddForce (m_Camera.transform.forward * power

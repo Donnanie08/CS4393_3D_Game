@@ -3,6 +3,9 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
+using UnityEngine.UI;
+using System.Collections.Generic;
+using System.Collections;
 
 namespace UnityStandardAssets.Characters.FirstPerson
 {
@@ -42,6 +45,18 @@ namespace UnityStandardAssets.Characters.FirstPerson
 		private bool m_Jumping;
 		private AudioSource m_AudioSource;
 
+		public GameObject coconut;
+		public Transform throwObj;
+		private float power;
+		public int powerLevel;
+		public int powerInc;
+		public int coconutNum;
+
+		//by Polly
+		public RectTransform BarBack;
+		public RectTransform BarFill;
+		private float n = 0f;
+
 		// Use this for initialization
 		private void Start()
 		{
@@ -55,6 +70,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			m_Jumping = false;
 			m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
+			power = powerLevel;
+
 		}
 
 
@@ -83,6 +100,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			m_PreviouslyGrounded = m_CharacterController.isGrounded;
 		}
 
+		public void fire(float power) {
+			GameObject projectile = Instantiate (coconut, m_Camera.gameObject.transform.position, 
+				m_Camera.gameObject.transform.rotation);
+			projectile.GetComponent<Rigidbody> ().AddForce (m_Camera.transform.forward * power
+				, ForceMode.Force);
+			//print ("power: " + power);
+			coconutNum--;
+		}
 
 		private void PlayLandingSound()
 		{
