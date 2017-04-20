@@ -61,6 +61,6 @@ public class PauseGame : MonoBehaviour {
 
 	public void MainMenu(){
 		//int currentIndex = SceneManager.GetActiveScene().buildIndex;
-		SceneManager.LoadScene(0);
+		SceneManager.LoadScene("StartScene");
 	}
 }
