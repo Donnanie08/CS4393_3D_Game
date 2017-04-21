@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityStandardAssets.Characters.FirstPerson;
 using UnityEngine.SceneManagement;
+
 using UnityEngine.UI;
-public class TerrainBehavior : MonoBehaviour {
+public class TerrainStandard : MonoBehaviour {
 
 	public static int boxesOnGround;
 	public int numberOfBoxes;
@@ -20,8 +21,9 @@ public class TerrainBehavior : MonoBehaviour {
 	private int prevScene;
 	private int curScene;
 	public MouseLook mouseLook;
-	public PauseGame pauseGame;
+	public bool cursorShow;
 	public Transform Player;
+
 	public bool panelactivate;
 
 	// Use this for initialization
@@ -46,7 +48,7 @@ public class TerrainBehavior : MonoBehaviour {
 		}
 		*/
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		/*
@@ -62,29 +64,34 @@ public class TerrainBehavior : MonoBehaviour {
 				SceneManager.LoadScene(0);
 			}}
 */
-
 		curScene = SceneManager.GetActiveScene ().buildIndex;
-		//Cursor.visible = true;
 
-			if (boxesOnGround * 200 > 2000) {
-				WinPanel.SetActive (true);
-			    mouseLook.panel = true;
-				Cursor.visible = true;
-				Cursor.lockState = CursorLockMode.None;
-				Time.timeScale = 0;
-				panelactivate = true;
+		if ((boxesOnGround * 200 > 2000)) {
+			WinPanel.SetActive (true);
+			//Cursor.visible = true;
+			//Cursor.lockState = CursorLockMode.None;
+			Time.timeScale = 0;
+			mouseLook.panel = true;
+			cursorShow = true;
+			//mouseLook.SetCursorLock(true);
+			//mouseLook.m_cursorIsLocked = false;
+			mouseLook.InternalLockUpdate ();
+			panelactivate = true;
 
-		} else if(coconutNum < -1){		
-			    mouseLook.panel = true;
-				Cursor.visible = true;
-				Cursor.lockState = CursorLockMode.None;
-				Time.timeScale = 0;
-				LostPanel.SetActive (true);
-				panelactivate = true;
-			}
-		Debug.Log(boxesOnGround);
+		} else if (coconutNum < -1) {
+			//Cursor.visible = true;
+			//Cursor.lockState = CursorLockMode.None;
+			Time.timeScale = 0;
+			LostPanel.SetActive (true);
+			cursorShow = true;
+			mouseLook.panel = true;
+			//mouseLook.SetCursorLock(true);
+			mouseLook.InternalLockUpdate ();
+			panelactivate = true;
+
+		}
+	
 		//boxesOnGround++;
-
 
 		if (Input.GetKey (KeyCode.Space)) {
 			//print ("key down" + power);
@@ -100,8 +107,11 @@ public class TerrainBehavior : MonoBehaviour {
 			power = 500;
 			coconutNum--;
 		}
-	
 
+	}
+	public void InActivate(){
+		LostPanel.SetActive (false);
+		WinPanel.SetActive (false);
 	}
 	public void Retry(){
 		int currentIndex = SceneManager.GetActiveScene().buildIndex;

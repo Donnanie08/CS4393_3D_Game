@@ -10,7 +10,7 @@ public class PauseGame : MonoBehaviour {
 	public GameObject pauseButton, pauseMenu;
 	public static bool isPaused;
 
-
+	public TerrainStandard terrainBehavior = new TerrainStandard();
 	void Start()
 	{
 		OnUnPause ();
@@ -27,6 +27,11 @@ public class PauseGame : MonoBehaviour {
 
 
 	public void OnPause(){
+		
+		if (terrainBehavior.panelactivate == true) {
+			terrainBehavior.InActivate();
+		}
+
 		pauseButton.SetActive (false);
 		pauseMenu.SetActive (true);
 		Time.timeScale = 0;

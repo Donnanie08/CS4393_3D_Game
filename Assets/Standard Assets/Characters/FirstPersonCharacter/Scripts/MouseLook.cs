@@ -1,11 +1,14 @@
 using System;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
+using System.Collections;
+using UnityEngine.UI;
+
 
 namespace UnityStandardAssets.Characters.FirstPerson
 {
     [Serializable]
-    public class MouseLook
+	public class MouseLook
     {
         public float XSensitivity = 2f;
         public float YSensitivity = 2f;
@@ -15,11 +18,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public bool smooth;
         public float smoothTime = 5f;
         public bool lockCursor = true;
-
-
+		public TerrainStandard terrainBehavior;
+		public bool panel;
         private Quaternion m_CharacterTargetRot;
         private Quaternion m_CameraTargetRot;
-        private bool m_cursorIsLocked = true;
+        public bool m_cursorIsLocked = true;
 
         public void Init(Transform character, Transform camera)
         {
@@ -65,6 +68,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
         }
 
+
         public void UpdateCursorLock()
         {
             //if the user set "lockCursor" we check & properly lock the cursos
@@ -72,12 +76,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 InternalLockUpdate();
         }
 
-        private void InternalLockUpdate()
+        public void InternalLockUpdate()
         {
-            if(Input.GetKeyUp(KeyCode.Escape))
+			Debug.Log (panel);
+
+			if((Input.GetKeyUp(KeyCode.Escape))||(panel == true)||(Input.GetKeyUp(KeyCode.S)))
             {
                 m_cursorIsLocked = false;
             }
+
             else if(Input.GetMouseButtonUp(0))
             {
                 m_cursorIsLocked = true;
