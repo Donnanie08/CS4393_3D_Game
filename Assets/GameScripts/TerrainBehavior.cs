@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityStandardAssets.Characters.FirstPerson;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class TerrainBehavior : MonoBehaviour {
 
 	public static int boxesOnGround;
@@ -13,6 +15,16 @@ public class TerrainBehavior : MonoBehaviour {
 	static public int power;
 	static public int coconutNum;
 	public int powerInc;
+	public GameObject LostPanel;
+	public GameObject WinPanel;
+	private int prevScene;
+	private int curScene;
+	public MouseLook mouseLook;
+	public PauseGame pauseGame;
+	public Transform Player;
+	public bool panelactivate;
+	static public int coconutsDestroyed;
+	private int coconutsToDestroy;
 
 	// Use this for initialization
 	void Start () {
@@ -22,21 +34,60 @@ public class TerrainBehavior : MonoBehaviour {
 		power = 500;
 		powerInc = 10;
 		level = thisLevel;
+		WinPanel.SetActive (false);
+		LostPanel.SetActive (false);
+		prevScene = SceneManager.GetActiveScene().buildIndex;
+		coconutsDestroyed = 0;
+		coconutsToDestroy = coconutNum;
+		/*
+		if ((TerrainBehavior.level) == 1) {
+			score2beat1 =4800;
+		} else if ((TerrainBehavior.level) == 2) {
+			score2beat2 = 3000;
+		} else if ((TerrainBehavior.level) == 3) {
+			score2beat3 = 2000;
+		}
+		*/
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		/*
 		if (boxesOnGround == numberOfBoxes * 3 / 4) {
 			if (level == 1) {
 				SceneManager.LoadScene ("Level2Scene");
 			} else if (level == 2) {
 				SceneManager.LoadScene ("Level3Scene");
 			} else {
+				LostPanel.SetActive (true);
+				Time.timeScale = 0;
+				Cursor.visible = true;
 				SceneManager.LoadScene(0);
-			}
+			}}
+*/
 
-			//boxesOnGround++;
+		curScene = SceneManager.GetActiveScene ().buildIndex;
+		//Cursor.visible = false;
+
+		if (boxesOnGround * 200 > 2000) {
+				WinPanel.SetActive (true);
+			    mouseLook.panel = true;
+				Cursor.visible = true;
+				Cursor.lockState = CursorLockMode.None;
+				Time.timeScale = 0;
+				panelactivate = true;
+
+		} else if(coconutsDestroyed == coconutsToDestroy){		
+			    mouseLook.panel = true;
+				Cursor.visible = true;
+				Cursor.lockState = CursorLockMode.None;
+				Time.timeScale = 0;
+				LostPanel.SetActive (true);
+				panelactivate = true;
 		}
+		Debug.Log(boxesOnGround);
+		//boxesOnGround++;
+
 
 		if (Input.GetKey (KeyCode.Space)) {
 			//print ("key down" + power);
@@ -50,11 +101,27 @@ public class TerrainBehavior : MonoBehaviour {
 			//fire ();
 			//power = powerLevel;
 			power = 500;
-			coconutNum--;
+			if (coconutNum > 0) {
+				coconutNum--;
+			}
 		}
+	
+
+	}
+	public void Retry(){
+		int currentIndex = SceneManager.GetActiveScene().buildIndex;
+		SceneManager.LoadScene (currentIndex);
 	}
 
+	public void MainMenu(){
+		//int currentIndex = SceneManager.GetActiveScene().buildIndex;
+		SceneManager.LoadScene("StartScene");
+	}
 
+	public void NextScene(){
+		int i = Application.loadedLevel;
+		Application.LoadLevel(i + 1);
+	}
 
 	/*
 	void OnCollisionStay(Collision coll) {

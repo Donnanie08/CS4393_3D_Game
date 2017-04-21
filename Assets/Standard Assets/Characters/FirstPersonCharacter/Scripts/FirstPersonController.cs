@@ -141,12 +141,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
         */
 
 		public void fire(float power) {
-			GameObject projectile = Instantiate (coconut, m_Camera.gameObject.transform.position, 
-				m_Camera.gameObject.transform.rotation);
-			projectile.GetComponent<Rigidbody> ().AddForce (m_Camera.transform.forward * power
+			if (coconutNum > 0) {
+				GameObject projectile = Instantiate (coconut, m_Camera.gameObject.transform.position, 
+					                       m_Camera.gameObject.transform.rotation);
+				projectile.GetComponent<Rigidbody> ().AddForce (m_Camera.transform.forward * power
 				, ForceMode.Force);
-			//print ("power: " + power);
-			coconutNum--;
+				//print ("power: " + power);
+
+				coconutNum--;
+			}
 		}
 
         private void PlayLandingSound()

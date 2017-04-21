@@ -31,4 +31,8 @@ public class CocoBehavior : MonoBehaviour {
 		}
 		*/
 	}
+
+	void OnDestroy () {
+		TerrainBehavior.coconutsDestroyed++;
+	}
 }
