@@ -98,7 +98,9 @@ public class TerrainBehavior : MonoBehaviour {
 			//fire ();
 			//power = powerLevel;
 			power = 500;
-			coconutNum--;
+			if (coconutNum > 0) {
+				coconutNum--;
+			}
 		}
 	
 
