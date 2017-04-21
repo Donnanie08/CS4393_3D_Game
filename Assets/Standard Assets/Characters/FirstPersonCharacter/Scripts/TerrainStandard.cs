@@ -125,7 +125,11 @@ public class TerrainStandard : MonoBehaviour {
 
 	public void NextScene(){
 		int i = Application.loadedLevel;
-		Application.LoadLevel(i + 1);
+		if (i == 3) {
+			SceneManager.LoadScene ("StartScene");
+		}
+		else
+			Application.LoadLevel (i + 1);
 	}
 
 	/*
