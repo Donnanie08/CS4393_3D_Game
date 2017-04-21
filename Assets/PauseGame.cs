@@ -13,8 +13,10 @@ public class PauseGame : MonoBehaviour {
 
 	void Start()
 	{
+		Cursor.visible = true;
 		OnUnPause ();
 		isPaused = false;
+
 	}
 
 

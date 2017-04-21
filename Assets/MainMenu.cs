@@ -13,6 +13,7 @@ public class MainMenu : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//grap the Button and Canvas type and attach to them
+		Cursor.visible = true;
 		exitMenu = exitMenu.GetComponent<Canvas>();
 		playText = playText.GetComponent<Button>();
 		exitText = exitText.GetComponent<Button>();
