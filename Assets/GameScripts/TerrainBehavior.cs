@@ -23,6 +23,8 @@ public class TerrainBehavior : MonoBehaviour {
 	public PauseGame pauseGame;
 	public Transform Player;
 	public bool panelactivate;
+	static public int coconutsDestroyed;
+	private int coconutsToDestroy;
 
 	// Use this for initialization
 	void Start () {
@@ -35,7 +37,8 @@ public class TerrainBehavior : MonoBehaviour {
 		WinPanel.SetActive (false);
 		LostPanel.SetActive (false);
 		prevScene = SceneManager.GetActiveScene().buildIndex;
-
+		coconutsDestroyed = 0;
+		coconutsToDestroy = coconutNum;
 		/*
 		if ((TerrainBehavior.level) == 1) {
 			score2beat1 =4800;
@@ -64,9 +67,9 @@ public class TerrainBehavior : MonoBehaviour {
 */
 
 		curScene = SceneManager.GetActiveScene ().buildIndex;
-		//Cursor.visible = true;
+		//Cursor.visible = false;
 
-			if (boxesOnGround * 200 > 2000) {
+		if (boxesOnGround * 200 > 2000) {
 				WinPanel.SetActive (true);
 			    mouseLook.panel = true;
 				Cursor.visible = true;
@@ -74,14 +77,14 @@ public class TerrainBehavior : MonoBehaviour {
 				Time.timeScale = 0;
 				panelactivate = true;
 
-		} else if(coconutNum < -1){		
+		} else if(coconutsDestroyed == coconutsToDestroy){		
 			    mouseLook.panel = true;
 				Cursor.visible = true;
 				Cursor.lockState = CursorLockMode.None;
 				Time.timeScale = 0;
 				LostPanel.SetActive (true);
 				panelactivate = true;
-			}
+		}
 		Debug.Log(boxesOnGround);
 		//boxesOnGround++;
 
