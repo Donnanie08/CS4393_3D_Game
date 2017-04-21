@@ -66,7 +66,7 @@ public class TerrainStandard : MonoBehaviour {
 */
 		curScene = SceneManager.GetActiveScene ().buildIndex;
 
-		if ((boxesOnGround * 200 > 2000)) {
+		if ((boxesOnGround * 200 > 2500)) {
 			WinPanel.SetActive (true);
 			//Cursor.visible = true;
 			//Cursor.lockState = CursorLockMode.None;
@@ -75,7 +75,7 @@ public class TerrainStandard : MonoBehaviour {
 			cursorShow = true;
 			//mouseLook.SetCursorLock(true);
 			//mouseLook.m_cursorIsLocked = false;
-			mouseLook.InternalLockUpdate ();
+			//mouseLook.InternalLockUpdate ();
 			panelactivate = true;
 
 		} else if (coconutNum < -1) {
@@ -86,7 +86,7 @@ public class TerrainStandard : MonoBehaviour {
 			cursorShow = true;
 			mouseLook.panel = true;
 			//mouseLook.SetCursorLock(true);
-			mouseLook.InternalLockUpdate ();
+			//mouseLook.InternalLockUpdate ();
 			panelactivate = true;
 
 		}

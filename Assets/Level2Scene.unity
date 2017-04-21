@@ -1229,7 +1229,6 @@ MonoBehaviour:
   Player: {fileID: 571989551}
   pauseButton: {fileID: 397745954}
   pauseMenu: {fileID: 1650135315}
-  terrainBehavior: {fileID: 0}
 --- !u!4 &600635856
 Transform:
   m_ObjectHideFlags: 0
@@ -2443,6 +2442,7 @@ GameObject:
   - component: {fileID: 1211334987}
   - component: {fileID: 1211334986}
   - component: {fileID: 1211334985}
+  - component: {fileID: 1211334989}
   m_Layer: 0
   m_Name: Terrain
   m_TagString: terra
@@ -2535,6 +2535,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1211334989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1211334984}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 129692c17340b4144bcdc343f109f5b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfBoxes: 20
+  thisLevel: 2
+  powerInc: 10
+  LostPanel: {fileID: 381216028}
+  WinPanel: {fileID: 1565582186}
+  mouseLook:
+    XSensitivity: 2
+    YSensitivity: 2
+    clampVerticalRotation: 1
+    MinimumX: -90
+    MaximumX: 90
+    smooth: 0
+    smoothTime: 5
+    lockCursor: 1
+    terrainBehavior: {fileID: 0}
+    panel: 0
+    m_cursorIsLocked: 1
+  cursorShow: 0
+  Player: {fileID: 571989551}
+  panelactivate: 0
 --- !u!1001 &1261594366
 Prefab:
   m_ObjectHideFlags: 0
@@ -4551,7 +4582,6 @@ MonoBehaviour:
   Player: {fileID: 571989551}
   pauseButton: {fileID: 397745954}
   pauseMenu: {fileID: 1650135315}
-  terrainBehavior: {fileID: 0}
 --- !u!114 &2009124000
 MonoBehaviour:
   m_ObjectHideFlags: 0

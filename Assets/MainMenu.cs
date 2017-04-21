@@ -12,11 +12,15 @@ public class MainMenu : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		Cursor.visible =true;
 		//grap the Button and Canvas type and attach to them
 		exitMenu = exitMenu.GetComponent<Canvas>();
 		playText = playText.GetComponent<Button>();
 		exitText = exitText.GetComponent<Button>();
 		exitMenu.enabled = false;
+	}
+	void Update(){
+		Cursor.visible = true;
 	}
 
 	//call this function whenever the user click on "EXIT" button

@@ -73,14 +73,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             //if the user set "lockCursor" we check & properly lock the cursos
             if (lockCursor)
-                InternalLockUpdate();
+                InternalLockUpdate(false);
         }
 
-        public void InternalLockUpdate()
+		public void InternalLockUpdate(bool m_cursorIsLocked)
         {
 			Debug.Log (panel);
 
-			if((Input.GetKeyUp(KeyCode.Escape))||(panel == true)||(Input.GetKeyUp(KeyCode.S)))
+			if((Input.GetKeyUp(KeyCode.Escape))||(Input.GetKeyUp(KeyCode.S)))
             {
                 m_cursorIsLocked = false;
             }

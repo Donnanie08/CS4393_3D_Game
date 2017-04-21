@@ -25,6 +25,7 @@ public class TerrainBehavior : MonoBehaviour {
 	public bool panelactivate;
 	static public int coconutsDestroyed;
 	private int coconutsToDestroy;
+	private int socre2beat;
 
 	// Use this for initialization
 	void Start () {
@@ -39,6 +40,7 @@ public class TerrainBehavior : MonoBehaviour {
 		prevScene = SceneManager.GetActiveScene().buildIndex;
 		coconutsDestroyed = 0;
 		coconutsToDestroy = coconutNum;
+
 		/*
 		if ((TerrainBehavior.level) == 1) {
 			score2beat1 =4800;
@@ -67,11 +69,19 @@ public class TerrainBehavior : MonoBehaviour {
 */
 
 		curScene = SceneManager.GetActiveScene ().buildIndex;
+		if (curScene == 1) {
+			socre2beat = 4800;
+		} else if (curScene == 2) {
+			socre2beat = 3000;
+			}
+		else if (curScene == 3) {
+			socre2beat = 2400;
+		}
 		//Cursor.visible = false;
-
-		if (boxesOnGround * 200 > 2000) {
+		if (boxesOnGround * 200 >= socre2beat) {
 				WinPanel.SetActive (true);
 			    mouseLook.panel = true;
+			mouseLook.InternalLockUpdate (false);
 				Cursor.visible = true;
 				Cursor.lockState = CursorLockMode.None;
 				Time.timeScale = 0;
@@ -79,6 +89,7 @@ public class TerrainBehavior : MonoBehaviour {
 
 		} else if(coconutsDestroyed == coconutsToDestroy){		
 			    mouseLook.panel = true;
+				mouseLook.InternalLockUpdate (false);
 				Cursor.visible = true;
 				Cursor.lockState = CursorLockMode.None;
 				Time.timeScale = 0;
@@ -120,7 +131,13 @@ public class TerrainBehavior : MonoBehaviour {
 
 	public void NextScene(){
 		int i = Application.loadedLevel;
-		Application.LoadLevel(i + 1);
+		if (i == 3) {
+			SceneManager.LoadScene("StartScene");
+
+
+		}
+		else
+			Application.LoadLevel (i + 1);
 	}
 
 	/*
