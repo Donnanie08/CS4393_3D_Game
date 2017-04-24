@@ -22,7 +22,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
 		public bool panel;
         private Quaternion m_CharacterTargetRot;
         private Quaternion m_CameraTargetRot;
-        public bool m_cursorIsLocked = true;
+        public bool m_cursorIsLocked = false;
+
+		public TerrainStandard ts;
 
         public void Init(Transform character, Transform camera)
         {
@@ -64,7 +66,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if(!lockCursor)
             {//we force unlock the cursor if the user disable the cursor locking helper
                 Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
+                Cursor.visible = false;
             }
         }
 
@@ -73,14 +75,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             //if the user set "lockCursor" we check & properly lock the cursos
             if (lockCursor)
-                InternalLockUpdate(false);
+                InternalLockUpdate();
         }
 
-		public void InternalLockUpdate(bool m_cursorIsLocked)
+		public void InternalLockUpdate()
         {
 			Debug.Log (panel);
 
-			if((Input.GetKeyUp(KeyCode.Escape))||(Input.GetKeyUp(KeyCode.S)))
+			if((Input.GetKeyUp(KeyCode.Escape))||(ts.WinPanel.activeSelf)||(Input.GetKeyUp(KeyCode.S))||(ts.LostPanel.activeSelf))
             {
                 m_cursorIsLocked = false;
             }

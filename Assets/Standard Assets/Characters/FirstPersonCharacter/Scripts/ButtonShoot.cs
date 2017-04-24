@@ -31,7 +31,7 @@ public class ButtonShoot : MonoBehaviour {
 	void Update () {
 		if (Input.GetKey(KeyCode.Space)) {
 			n += Time.deltaTime;
-			power = Mathf.PingPong (n, 1f);
+			power = Mathf.PingPong (n*3, 1f);
 			BarFill.sizeDelta = new Vector2 (BarBack.sizeDelta.x * power, BarBack.sizeDelta.y);
 		}
 		if(Input.GetKeyUp(KeyCode.Space)){

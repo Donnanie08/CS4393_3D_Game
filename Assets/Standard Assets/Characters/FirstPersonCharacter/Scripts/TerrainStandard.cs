@@ -30,7 +30,7 @@ public class TerrainStandard : MonoBehaviour {
 	void Start () {
 		//print (numberOfBoxes);
 		boxesOnGround = 0;
-		coconutNum = 5;
+		coconutNum = 3;
 		power = 500;
 		powerInc = 10;
 		level = thisLevel;
@@ -77,6 +77,7 @@ public class TerrainStandard : MonoBehaviour {
 			//mouseLook.m_cursorIsLocked = false;
 			//mouseLook.InternalLockUpdate ();
 			panelactivate = true;
+			mouseLook.SetCursorLock (false);
 
 		} else if (coconutNum < -1) {
 			//Cursor.visible = true;
@@ -84,7 +85,7 @@ public class TerrainStandard : MonoBehaviour {
 			Time.timeScale = 0;
 			LostPanel.SetActive (true);
 			cursorShow = true;
-			mouseLook.panel = true;
+			mouseLook.SetCursorLock (false);
 			//mouseLook.SetCursorLock(true);
 			//mouseLook.InternalLockUpdate ();
 			panelactivate = true;

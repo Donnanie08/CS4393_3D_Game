@@ -23,7 +23,7 @@ public class HUD : MonoBehaviour {
 	void Update () {
 		level.text = "Level: " + (TerrainBehavior.level).ToString();
 		coconutsLeft.text = "Coconuts Left: " + TerrainBehavior.coconutNum;
-		powerLevel.text = "Power Level: " + TerrainBehavior.power;
+		powerLevel.text = "Power Level: ";
 		score.text = "Score: " + (TerrainBehavior.boxesOnGround * 200).ToString ();
 		if ((TerrainBehavior.level) == 1) {
 			score2Beat.text = "Score to Beat Level: 4800";

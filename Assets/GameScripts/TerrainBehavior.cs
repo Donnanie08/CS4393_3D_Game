@@ -31,7 +31,7 @@ public class TerrainBehavior : MonoBehaviour {
 	void Start () {
 		//print (numberOfBoxes);
 		boxesOnGround = 0;
-		coconutNum = 5;
+		coconutNum = 3;
 		power = 500;
 		powerInc = 10;
 		level = thisLevel;
@@ -81,7 +81,7 @@ public class TerrainBehavior : MonoBehaviour {
 		if (boxesOnGround * 200 >= socre2beat) {
 				WinPanel.SetActive (true);
 			    mouseLook.panel = true;
-			mouseLook.InternalLockUpdate (false);
+			mouseLook.SetCursorLock (false);
 				Cursor.visible = true;
 				Cursor.lockState = CursorLockMode.None;
 				Time.timeScale = 0;
@@ -89,7 +89,7 @@ public class TerrainBehavior : MonoBehaviour {
 
 		} else if(coconutsDestroyed == coconutsToDestroy){		
 			    mouseLook.panel = true;
-				mouseLook.InternalLockUpdate (false);
+			mouseLook.SetCursorLock (false);
 				Cursor.visible = true;
 				Cursor.lockState = CursorLockMode.None;
 				Time.timeScale = 0;
