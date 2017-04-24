@@ -151,11 +151,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
 				m_MoveDir += Physics.gravity*m_GravityMultiplier*Time.fixedDeltaTime;
 			}
 			m_CollisionFlags = m_CharacterController.Move(m_MoveDir*Time.fixedDeltaTime);
-
+			AudioSource source = GetComponent<AudioSource> ();
+			source.Play ();
 			ProgressStepCycle(speed);
 			UpdateCameraPosition(speed);
 
-			//m_MouseLook.UpdateCursorLock();
+		m_MouseLook.UpdateCursorLock();
 		}
 
 
@@ -271,6 +272,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			//dont move the rigidbody if the character is on top of it
 			if (m_CollisionFlags == CollisionFlags.Below)
 			{
+				AudioSource source = GetComponent<AudioSource> ();
+				source.Play ();
 				return;
 			}
 

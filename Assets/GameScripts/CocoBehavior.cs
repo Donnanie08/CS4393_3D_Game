@@ -34,5 +34,7 @@ public class CocoBehavior : MonoBehaviour {
 
 	void OnDestroy () {
 		TerrainBehavior.coconutsDestroyed++;
+		AudioSource source = GetComponent<AudioSource> ();
+		source.Play ();
 	}
 }

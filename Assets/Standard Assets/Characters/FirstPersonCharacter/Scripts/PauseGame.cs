@@ -56,11 +56,13 @@ public class PauseGame : MonoBehaviour {
 	}
 */
 	public void Retry(){
+
 		int currentIndex = SceneManager.GetActiveScene().buildIndex;
 		SceneManager.LoadScene (currentIndex);
 	}
 
 	public void MainMenu(){
+
 		//int currentIndex = SceneManager.GetActiveScene().buildIndex;
 		SceneManager.LoadScene("StartScene");
 	}

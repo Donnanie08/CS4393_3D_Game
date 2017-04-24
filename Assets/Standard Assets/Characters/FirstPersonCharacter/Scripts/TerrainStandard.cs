@@ -30,7 +30,7 @@ public class TerrainStandard : MonoBehaviour {
 	void Start () {
 		//print (numberOfBoxes);
 		boxesOnGround = 0;
-		coconutNum = 3;
+		coconutNum = 2;
 		power = 500;
 		powerInc = 10;
 		level = thisLevel;

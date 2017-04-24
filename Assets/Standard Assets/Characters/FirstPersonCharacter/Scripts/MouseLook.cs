@@ -82,7 +82,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
 			Debug.Log (panel);
 
-			if((Input.GetKeyUp(KeyCode.Escape))||(ts.WinPanel.activeSelf)||(Input.GetKeyUp(KeyCode.S))||(ts.LostPanel.activeSelf))
+			if((Input.GetKeyUp(KeyCode.Escape))||(Input.GetKeyUp(KeyCode.S)))
             {
                 m_cursorIsLocked = false;
             }

@@ -48,7 +48,7 @@ public class SmoothMouseLook : MonoBehaviour
 
 	void Update ()
 	{
-		MouseLock();
+		//MouseLock();
 
 		Vector2 inputs = new Vector2 (Input.GetAxis("Mouse X"),Input.GetAxis("Mouse Y"));
 

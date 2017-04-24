@@ -18,6 +18,8 @@ public class BoxBehavior : MonoBehaviour {
 
 	void OnCollisionEnter(Collision coll) {
 		if (coll.gameObject.CompareTag("terra") == true) {
+			AudioSource source = GetComponent<AudioSource> ();
+			source.Play ();
 			//Destroy (gameObject, 5);
 			if (!TerrainBehavior.hashMap.ContainsKey(gameObject.GetInstanceID ())) {
 				TerrainBehavior.hashMap.Add (gameObject.GetInstanceID (), 1);

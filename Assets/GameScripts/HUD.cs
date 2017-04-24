@@ -26,11 +26,11 @@ public class HUD : MonoBehaviour {
 		powerLevel.text = "Power Level: ";
 		score.text = "Score: " + (TerrainBehavior.boxesOnGround * 200).ToString ();
 		if ((TerrainBehavior.level) == 1) {
-			score2Beat.text = "Score to Beat Level: 4800";
+			score2Beat.text = "Score to Beat Level: 5000";
 		} else if ((TerrainBehavior.level) == 2) {
-			score2Beat.text = "Score to Beat Level: 3000";
+			score2Beat.text = "Score to Beat Level: 3200";
 		} else if ((TerrainBehavior.level) == 3) {
-			score2Beat.text = "Score to Beat Level: 2000";
+			score2Beat.text = "Score to Beat Level: 2600";
 		}
 	}
 }

@@ -199,7 +199,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 	            ProgressStepCycle(speed);
 	            UpdateCameraPosition(speed);
 
-	            //m_MouseLook.UpdateCursorLock();
+	            m_MouseLook.UpdateCursorLock();
 				//Cursor.visible = true;
 			//}
         }
@@ -317,7 +317,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             //dont move the rigidbody if the character is on top of it
             if (m_CollisionFlags == CollisionFlags.Below)
             {
-                return;
+               
+				return;
             }
 
             if (body == null || body.isKinematic)
