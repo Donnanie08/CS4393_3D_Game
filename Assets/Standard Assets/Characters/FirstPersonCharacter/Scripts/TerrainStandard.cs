@@ -77,7 +77,7 @@ public class TerrainStandard : MonoBehaviour {
 			//mouseLook.m_cursorIsLocked = false;
 			//mouseLook.InternalLockUpdate ();
 			panelactivate = true;
-			mouseLook.SetCursorLock (false);
+			//mouseLook.SetCursorLock (false);
 
 		} else if (coconutNum < -1) {
 			//Cursor.visible = true;
@@ -85,7 +85,7 @@ public class TerrainStandard : MonoBehaviour {
 			Time.timeScale = 0;
 			LostPanel.SetActive (true);
 			cursorShow = true;
-			mouseLook.SetCursorLock (false);
+			//mouseLook.SetCursorLock (false);
 			//mouseLook.SetCursorLock(true);
 			//mouseLook.InternalLockUpdate ();
 			panelactivate = true;
