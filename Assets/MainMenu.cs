@@ -64,13 +64,15 @@ public class MainMenu : MonoBehaviour {
 
 
 	public void HowToPlay(){
+		HowtoplayPanel.SetActive (true);
+		/*
 		exitMenu.SetActive (false); //will display the exit menu canvas
 		//disable PLAY and EXIT buttons
-		playText.SetActive (false); 
+		playText.SetActive (true); 
 		exitText.SetActive (false);
 		HowtoplayButton.SetActive (false);
-		HowtoplayPanel.SetActive (true);
 
+*/
 	}
 
 	public void BacktoMainMenu(){

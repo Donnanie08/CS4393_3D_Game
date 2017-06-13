@@ -200,7 +200,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 	            UpdateCameraPosition(speed);
 
 	            m_MouseLook.UpdateCursorLock();
-				//Cursor.visible = true;
+				Cursor.visible = true;
 			//}
         }
 

@@ -68,8 +68,8 @@ public class TerrainStandard : MonoBehaviour {
 
 		if ((boxesOnGround * 200 > 2500)) {
 			WinPanel.SetActive (true);
-			//Cursor.visible = true;
-			//Cursor.lockState = CursorLockMode.None;
+			Cursor.visible = true;
+			Cursor.lockState = CursorLockMode.None;
 			Time.timeScale = 0;
 			mouseLook.panel = true;
 			cursorShow = true;
